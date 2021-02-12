@@ -24,7 +24,24 @@
 
 ;;; Code:
 
+(require 'google-api-client)
 
+
+;;;; Calendar
+
+(defclass google-api-calendar-client (google-api-client)
+  ((api-url       :initform "https://www.googleapis.com/calendar/v3")
+   (auth-url      :initform "https://accounts.google.com/o/oauth2/auth")
+   (token-url     :initform "https://www.googleapis.com/oauth2/v3/token")
+
+   (client-id     :initarg :client-id)
+   (client-secret :initarg :client-secret)
+   (scope         :initarg :scope :initform "https://www.googleapis.com/auth/calendar")
+
+   (access-token)
+   (refresh-token)
+   (expires)
+   (refresh-url)))
 
 (provide 'google-api-interface)
 
