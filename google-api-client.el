@@ -24,6 +24,22 @@
 
 ;;; Code:
 
+(require 'google-api-http)
+
+(defclass google-api-client ()
+  ((api-url       :allocation :class)
+   (auth-url      :allocation :class)
+   (token-url     :allocation :class)
+
+   (client-id     :initarg :client-id)
+   (client-secret :initarg :client-secret)
+   (scope         :initarg :scope)
+
+   (access-token)
+   (refresh-token)
+   (expires)
+   (refresh-url))
+  :abstract t)
 
 
 (provide 'google-api-client)
