@@ -24,7 +24,38 @@
 
 ;;; Code:
 
+(defun google-api-http-make-query-string (params)
+  "Build query string from PARAMS.
 
+Example:
+  (gcal-http-make-query-string '((\"a\" . \"b\") (\"c\" . \"d\")))
+  ;;=> \"a=b&c=d\"
+
+  (gcal-http-make-query-string '((a . \"b\") (c . \"d\")))
+  ;;=> \"a=b&c=d\"
+
+  (gcal-http-make-query-string '((a . \"b\") (c . (\"d\" \"e\"))))
+  ;;=> \"a=b&c=d&c=e\""
+  (cl-flet ((concat-args
+             (elm)
+             (format "%s=%s"
+                     (url-hexify-string (format "%s" (car elm)))
+                     (url-hexify-string (format "%s" (cdr elm)))))
+            (concat-seqs (sequence) (mapconcat 'identity sequence "&")))
+    (thread-last params
+      (mapcan (lambda (elm)
+                (if (atom (cdr elm))
+                    (list elm)
+                  (mapcar (lambda (e) (cons (car elm) e)) (cdr elm)))))
+      (mapcar #'concat-args)
+      (concat-seqs))))
+
+(defun google-api-http-make-query-url (url params)
+  "Build URL with query PARAMS."
+  (concat
+   url
+   (when params
+     (concat "?" (google-api-http-make-query-string params)))))
 
 (provide 'google-api-http)
 
