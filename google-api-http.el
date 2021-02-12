@@ -24,6 +24,29 @@
 
 ;;; Code:
 
+(require 'request)
+
+(defclass google-api-request-response ()
+  (;; original slots
+   (url           :initarg :url)
+   (code          :initarg :code) ; status-code
+   (body          :initarg :body)        ; data
+   (history       :initarg :history)
+   (error-thrown  :initarg :error-thrown)
+   (symbol-status :initarg :symbol-status)
+   (done-p        :initarg :done-p)
+   (settings      :initarg :settings)
+
+   ;; original internal slots
+   (buffer        :initarg :buffer)
+   (raw-header    :initarg :raw-header)
+   (timer         :initarg :timer)
+   (backend       :initarg :backend)
+
+   ;; enhanced slots
+   (headers       :initarg :headers))
+  "Enhance class on `request-response'.")
+
 (defun google-api-http-make-query-string (params)
   "Build query string from PARAMS.
 
