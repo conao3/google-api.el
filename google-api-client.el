@@ -25,7 +25,6 @@
 ;;; Code:
 
 (require 'oauth2)
-(require 'google-api-http)
 
 (defclass google-api-client ()
   ((api-url       :allocation :class)
