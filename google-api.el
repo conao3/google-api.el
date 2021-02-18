@@ -28,10 +28,25 @@
 
 ;;; Code:
 
+(require 'eieio)
+
 (defgroup google-api nil
   "Google API utilities."
   :group 'convenience
   :link '(url-link :tag "Github" "https://github.com/conao3/google-api.el"))
+
+(defclass google-api-token ()
+  ((api-url       :allocation :class)
+   (auth-url      :allocation :class)
+   (token-url     :allocation :class)
+
+   (client-id     :initarg :client-id)
+   (client-secret :initarg :client-secret)
+   (scope         :initarg :scope)
+
+   (token))
+  "Google api token class."
+  :abstract t)
 
 (provide 'google-api)
 
