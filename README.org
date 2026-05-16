@@ -23,7 +23,7 @@ google-api.el provides a foundation for interacting with Google APIs from Emacs.
 * Requirements
 
 - Emacs 27.1 or later
-- [[https://github.com/pkulev/oauth2-request][oauth2-request]] (0.14+)
+- [[https://github.com/conao3/oauth2-request.el][oauth2-request]] (1.0.0+)
 - [[https://github.com/chuntaro/emacs-async-await][async-await]] (1.1+)
 
 * Installation

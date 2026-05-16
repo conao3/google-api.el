@@ -5,7 +5,7 @@
 ;; Author: Naoya Yamashita <conao3@gmail.com>
 ;; Version: 0.0.1
 ;; Keywords: convenience
-;; Package-Requires: ((emacs "27.1") (oauth2-request "0.14") (async-await "1.1"))
+;; Package-Requires: ((emacs "27.1") (oauth2-request "1.0.0") (async-await "1.1"))
 ;; URL: https://github.com/conao3/google-api.el
 
 ;; This program is free software: you can redistribute it and/or modify
